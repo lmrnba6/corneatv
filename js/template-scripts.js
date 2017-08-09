@@ -51,16 +51,18 @@ jQuery(document).ready(function($) {
     //Do not include! This prevents the form from submitting for DEMO purposes only!
     $('form').submit(function(event) {
         event.preventDefault();
+		$('.searchList').empty();
 		var input = $('#searchChannel').val();
 		var cpt = 0;
 		for (i = 0; i < channels.length; i++) { 
 			for (j = 0; j < channels[i].channels.length; j++) {
-				if(channels[i].channels[j].indexOf(input) >= 0){
+				debugger
+				if(channels[i].channels[j].toLowerCase().indexOf(input) >= 0){
+					$('.searchList').append('<li>'+channels[i].channels[j].toUpperCase()+'</li>');
 					cpt++;
 				}
 			}				
 		}
-		alert("We found "+ cpt + " channels with this name")
         return false;
     })
 	
